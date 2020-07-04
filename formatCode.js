@@ -10,6 +10,8 @@ var headerTitle = " Belajar javascript"
 const PI = 3.1
 
 =>penulisan statment
+var y =5;
+var z = 10;
 var x = y + z ;
 
 
