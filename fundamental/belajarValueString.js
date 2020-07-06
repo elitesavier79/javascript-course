@@ -10,7 +10,7 @@ let firstName = "Bambang";
 let lastName = "pamungkas";
 let angka = "79";
 
-//string concatenates
+//string concatenates dengan petik satu dan petik dua
 let namaLengkap = firstName +' '+ lastName+" "+angka;
 
 //string concantenates dengan backtic
