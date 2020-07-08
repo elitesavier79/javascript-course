@@ -18,5 +18,6 @@ let myBiodata = { // pakai tanda kurung kurawal
 
 }
 
-console.log(listmenu[1]);
 
+console.log(listmenu[1]);
+console.log(200%2 === 0);
