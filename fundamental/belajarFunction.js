@@ -1,23 +1,30 @@
 //function return value
 
 
-//function definition
+//contoh function definition
 /*const perpangkatan = function(n) {
 	return n * n
 }
 console.log(perpangkatan(2))*/
 
-//function declaration
-function perpangkatan(n) {
-	return n*n
-}
+//contoh function declaration
+//function perpangkatan(n) {
+	//return n*n
+//}
+//contoh Arrow function
+//const perpangkatan = (n) => { // penulisan cara pertama
+	//return n*n
+//}
+
+const perpangkatan = n => n*n // penulisan cara kedua
+
 console.log(perpangkatan(3))
 
 //function side effect
-function sayhello() {
-	alert("hello")
-}
-console.log(sayhello())
+//function sayhello() {
+	//alert("hello")
+//}
+//console.log(sayhello())
 
 
 
