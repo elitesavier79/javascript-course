@@ -16,7 +16,7 @@ console.log(array) */
 
 const array = [1,2,3,4,5]
 
-//Push method => digunakan untuk menambah/add element/value baru di akhir array
+/*Push method => digunakan untuk menambah/add element/value baru di akhir array
 array.push(6)
 
 
@@ -28,5 +28,15 @@ array.unshift(0)
 
 //shift method => digunakan untuk menghilang/remove element/value di awal array
 array.shift()
+
+//slice method =>digunkan untuk mengambil sebagian dari urutan element/value dalam array
+let angka = array.slice(1, 5) // slice(index yg ambil,  jumlah index yg diambil)
+
+console.log(angka)*/
+
+//splice method =>digunakan untuk merubah isi dari array 
+array.splice(1, 3)
+
+array.splice(1, 1, 2)
 
 console.log(array)
