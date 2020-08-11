@@ -30,7 +30,7 @@ array.forEach(coba)
 
 function coba(value){
 	console.log(value + ' buah')
-} */
+} 
 
 
 //Map method =>sama kyk forEach tapi map mengembalikan nilai Array baru
@@ -41,4 +41,13 @@ function kali (value) {
 	return value * 2
 }
 
-console.log(perkalian)
+console.log(perkalian) */
+
+//Filter method =>digunakan itu memnyaring isi array sesuai yg dikondisi kan
+const filterAngka = array.filter(saring)
+
+function saring(value) {
+	return value >= 3
+}
+
+console.log(filterAngka)
