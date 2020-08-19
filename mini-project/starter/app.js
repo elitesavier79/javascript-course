@@ -13,6 +13,8 @@ todoList.addEventListener("click", deleteTodo);
 function addTodo(e) {
 	e.preventDefault();
 
+	if(todoInput.value) {
+
 	//membuat li element
 	const li = document.createElement("li")
 
@@ -38,6 +40,9 @@ function addTodo(e) {
 	todoList.appendChild(li)
 	todoInput.value = "" //untuk membuat todo input jadi kosong
 	
+	} else {
+		alert("Not Empty Input !!! ")
+	}
 }
 
 function deleteTodo(e) {
