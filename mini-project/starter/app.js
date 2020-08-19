@@ -36,17 +36,19 @@ function addTodo(e) {
 
 	//memasukan element li ke dlm element todolist
 	todoList.appendChild(li)
-
-	console.log(li)
+	todoInput.value = "" //untuk membuat todo input jadi kosong
+	
 }
 
 function deleteTodo(e) {
 	e.preventDefault();
 
 	if(e.target.classList.contains("delete-todo")) {
+		if(confirm("Are You Sure delete this todo?")){
 		const parent = e.target.parentElement;
 
 		parent.remove()
+		}
 	}
 
 }
