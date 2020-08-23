@@ -9,6 +9,7 @@ const clearButton = document.querySelector("#clear-todos");
 //AddEventListener adalah Merupakan method yang berfungsi untuk membuat event (click, change, mouseout, dll) untuk keperluan manipulasi DOM.
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", deleteTodo);
+clearButton.addEventListener("click", clearTodos)
 
 function addTodo(e) {
 	e.preventDefault();
@@ -56,4 +57,8 @@ function deleteTodo(e) {
 		}
 	}
 
+}
+
+function clearTodos () {
+	todoList.innerHTML = ""
 }
