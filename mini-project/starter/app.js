@@ -7,13 +7,69 @@ const clearButton = document.querySelector("#clear-todos");
 
 
 //AddEventListener adalah Merupakan method yang berfungsi untuk membuat event (click, change, mouseout, dll) untuk keperluan manipulasi DOM.
-todoForm.addEventListener("submit", addTodo);
-todoList.addEventListener("click", deleteTodo);
-clearButton.addEventListener("click", clearTodos)
-filterInput.addEventListener("keyup", filterTodos)
+immediateloadEventListener();
 
+function immediateloadEventListener() {
+
+	//ini event untuk mengambil todos dari localstorage dan merender ke browser
+	document.addEventListener("DOMContentLoaded", getTodos);
+
+	//ini event untuk menambah todo
+	todoForm.addEventListener("submit", addTodo);
+
+	//ini event untuk menghapus 1 todo
+	todoList.addEventListener("click", deleteTodo);
+
+	//ini event untuk menghapus semua todos
+	clearButton.addEventListener("click", clearTodos)
+
+	//ini event untuk memfilter todos
+	filterInput.addEventListener("keyup", filterTodos)
+
+	
+
+}
 
 //ini bagian dari DOM function
+
+function getTodos() {
+	let todos;
+
+	if(localStorage.getItem("todos") == null) {
+		todos = [];
+	} else {
+		todos = JSON.parse(localStorage.getItem("todos"));
+	}
+	
+	todos.forEach((todo) => {
+		//membuat li element
+	const li = document.createElement("li")
+
+	//menambahkan class pada element li
+	li.className = "todo-item list-group-item d-flex justify-content-between align-items-center mb-1"
+
+	//menambahkan children ke dlm element li
+	li.appendChild(document.createTextNode(todo))
+
+
+	//membuat delete button
+	const a = document.createElement("a");
+
+	//memberi properti untuk a element
+	a.href = "#";
+	a.className = "badge badge-danger delete-todo"
+	a.innerHTML = "Delete";
+
+	//menyelipkan element a ke dlm children li
+	li.appendChild(a)
+
+	//memasukan element li ke dlm element todolist
+	todoList.appendChild(li)
+	})	
+	
+}
+
+
 function addTodo(e) {
 	e.preventDefault();
 
