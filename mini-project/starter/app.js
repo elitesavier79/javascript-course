@@ -102,6 +102,8 @@ function addTodoLocalStorage(todoInputValue) {
 	localStorage.setItem("todos", JSON.stringify(todos))
 }
 
+
+
 function deleteTodo(e) {
 	e.preventDefault();
 
@@ -110,9 +112,22 @@ function deleteTodo(e) {
 		const parent = e.target.parentElement;
 
 		parent.remove()
+
+		deleteTodoLocalStorage(parent)
 		}
 	}
+}
 
+function deleteTodoLocalStorage(deletedElement) {
+	const todos = getItemFromLocalStorage();
+
+	todos.forEach((todo, index) => {
+		if(deletedElement.firstChild.textContent == todo) {
+			todos.splice(index, 1)
+		}
+	})
+
+	localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function clearTodos () {
