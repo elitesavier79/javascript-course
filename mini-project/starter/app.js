@@ -12,6 +12,8 @@ todoList.addEventListener("click", deleteTodo);
 clearButton.addEventListener("click", clearTodos)
 filterInput.addEventListener("keyup", filterTodos)
 
+
+//ini bagian dari DOM function
 function addTodo(e) {
 	e.preventDefault();
 
@@ -40,11 +42,26 @@ function addTodo(e) {
 
 	//memasukan element li ke dlm element todolist
 	todoList.appendChild(li)
-	todoInput.value = "" //untuk membuat todo input jadi kosong
 	
+	addTodoLocalStorage(todoInput.value);
+	todoInput.value = "" //untuk membuat todo input jadi kosong
+
 	} else {
 		alert("Not Empty Input !!! ")
 	}
+}
+
+function addTodoLocalStorage(todoInputValue) {
+	let todos;
+
+	if(localStorage.getItem("todos") == null) {
+		todos = [];
+	}else {
+		todos = JSON.parse(localStorage.getItem("todos"));
+	}
+	
+	todos.push(todoInputValue)
+	localStorage.setItem("todos", JSON.stringify(todos))
 }
 
 function deleteTodo(e) {
@@ -81,6 +98,7 @@ function filterTodos (e) {
 	
 	})
 
-
 }
+
+
 
