@@ -132,7 +132,11 @@ function deleteTodoLocalStorage(deletedElement) {
 
 function clearTodos () {
 	todoList.innerHTML = ""
+
+	localStorage.clear();
 }
+
+
 
 function filterTodos (e) {
 	const filterText = e.target.value.toLowerCase();
