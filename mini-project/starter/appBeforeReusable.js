@@ -28,15 +28,59 @@ function immediateloadEventListener() {
 
 }
 
-//Reusable code
-function createTodoElement(value) {
+//ini bagian dari DOM function
+
+function getTodos() {
+	let todos;
+
+	if(localStorage.getItem("todos") == null) {
+		todos = [];
+	} else {
+		todos = JSON.parse(localStorage.getItem("todos"));
+	}
+	
+	todos.forEach((todo) => {
+		//membuat li element
 	const li = document.createElement("li")
 
 	//menambahkan class pada element li
 	li.className = "todo-item list-group-item d-flex justify-content-between align-items-center mb-1"
 
 	//menambahkan children ke dlm element li
-	li.appendChild(document.createTextNode(value))
+	li.appendChild(document.createTextNode(todo))
+
+
+	//membuat delete button
+	const a = document.createElement("a");
+
+	//memberi properti untuk a element
+	a.href = "#";
+	a.className = "badge badge-danger delete-todo"
+	a.innerHTML = "Delete";
+
+	//menyelipkan element a ke dlm children li
+	li.appendChild(a)
+
+	//memasukan element li ke dlm element todolist
+	todoList.appendChild(li)
+	})	
+	
+}
+
+
+function addTodo(e) {
+	e.preventDefault();
+
+	if(todoInput.value) {
+
+	//membuat li element
+	const li = document.createElement("li")
+
+	//menambahkan class pada element li
+	li.className = "todo-item list-group-item d-flex justify-content-between align-items-center mb-1"
+
+	//menambahkan children ke dlm element li
+	li.appendChild(document.createTextNode(todoInput.value))
 
 
 	//membuat delete button
@@ -53,41 +97,7 @@ function createTodoElement(value) {
 	//memasukan element li ke dlm element todolist
 	todoList.appendChild(li)
 	
-}
-
-function getItemFromLocalStorage(){
-	let todos;
-
-	if(localStorage.getItem("todos") == null) {
-		todos = [];
-	} else {
-		todos = JSON.parse(localStorage.getItem("todos"));
-	}
-
-	return todos;
-}
-
-//ini bagian dari DOM function
-
-function getTodos() {
-	const todos = getItemFromLocalStorage();
-	
-	todos.forEach((todo) => {
-		createTodoElement(todo)
-	})	
-	
-}
-
-
-function addTodo(e) {
-	e.preventDefault();
-
-	if(todoInput.value) {
-
-	createTodoElement(todoInput.value);
-
 	addTodoLocalStorage(todoInput.value);
-
 	todoInput.value = "" //untuk membuat todo input jadi kosong
 
 	} else {
@@ -96,7 +106,13 @@ function addTodo(e) {
 }
 
 function addTodoLocalStorage(todoInputValue) {
-	const todos = getItemFromLocalStorage();
+	let todos;
+
+	if(localStorage.getItem("todos") == null) {
+		todos = [];
+	}else {
+		todos = JSON.parse(localStorage.getItem("todos"));
+	}
 	
 	todos.push(todoInputValue)
 	localStorage.setItem("todos", JSON.stringify(todos))
